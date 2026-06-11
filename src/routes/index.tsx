@@ -573,7 +573,7 @@ function CareerTracks() {
 /* ---------------- Team ---------------- */
 function Team() {
   const members = [
-    { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#" },
+    { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto.url },
     { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/" },
     { role: "Head of Research", name: "Name Surname", linkedin: "#" },
     { role: "Analyst", name: "Name Surname", linkedin: "#" },
@@ -599,11 +599,19 @@ function Team() {
             >
               <div className="aspect-[4/5] relative bg-navy-deep flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 grid-overlay opacity-30" />
-                <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-gold/40 bg-navy-deep">
-                  <span className="font-serif text-4xl text-gold-gradient">
-                    {m.role.split(" ").map((w) => w[0]).join("")}
-                  </span>
-                </div>
+                {m.photo ? (
+                  <img
+                    src={m.photo}
+                    alt={m.name}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-gold/40 bg-navy-deep">
+                    <span className="font-serif text-4xl text-gold-gradient">
+                      {m.role.split(" ").map((w) => w[0]).join("")}
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-deep to-transparent" />
               </div>
               <div className="p-6 border-t border-gold/15">
