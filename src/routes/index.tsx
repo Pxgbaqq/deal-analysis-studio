@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import logo from "@/assets/wms-logo.jpg";
+import dmytroPhoto from "@/assets/dmytro.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
