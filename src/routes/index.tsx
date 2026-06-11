@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import logo from "@/assets/wms-logo.jpg";
 import dmytroPhoto from "@/assets/dmytro.png.asset.json";
+import alexandrPhoto from "@/assets/alexandr.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
@@ -574,7 +575,7 @@ function CareerTracks() {
 function Team() {
   const members = [
     { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto.url },
-    { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/" },
+    { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto.url },
     { role: "Head of Research", name: "Name Surname", linkedin: "#" },
     { role: "Analyst", name: "Name Surname", linkedin: "#" },
   ];
