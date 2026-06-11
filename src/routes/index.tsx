@@ -280,7 +280,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 /* ---------------- About ---------------- */
 function About() {
   const stats = [
-    { value: 25, suffix: "+", label: "Members" },
+    { value: 10, suffix: "+", label: "Members" },
     { value: 10, suffix: "+", label: "Industries Analyzed" },
     { value: 1, suffix: "", label: "Live M&A Project" },
     { value: 100, suffix: "%", label: "Student-Led" },
@@ -621,8 +621,8 @@ function CareerTracks() {
 /* ---------------- Team ---------------- */
 function Team() {
   const members = [
-    { role: "President", name: "Name Surname" },
-    { role: "Vice President", name: "Name Surname" },
+    { role: "President", name: "Dmytro Kuryltsiv" },
+    { role: "Vice President", name: "Alexandr Saharov" },
     { role: "Head of Research", name: "Name Surname" },
     { role: "Analyst", name: "Name Surname" },
   ];
@@ -763,7 +763,7 @@ function Contact() {
               <span className="flex h-11 w-11 items-center justify-center border border-gold/40 group-hover:border-gold transition-colors">
                 <Linkedin size={16} className="text-gold" />
               </span>
-              <span className="text-sm tracking-wide">linkedin.com/company/warsaw-ma-society</span>
+              <span className="text-sm tracking-wide">linkedin.com/company/warsaw-m-a-society</span>
             </a>
           </div>
         </div>
