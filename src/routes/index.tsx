@@ -621,10 +621,10 @@ function CareerTracks() {
 /* ---------------- Team ---------------- */
 function Team() {
   const members = [
-    { role: "President", name: "Dmytro Kuryltsiv" },
-    { role: "Vice President", name: "Alexandr Saharov" },
-    { role: "Head of Research", name: "Name Surname" },
-    { role: "Analyst", name: "Name Surname" },
+    { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#" },
+    { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/" },
+    { role: "Head of Research", name: "Name Surname", linkedin: "#" },
+    { role: "Analyst", name: "Name Surname", linkedin: "#" },
   ];
   return (
     <section id="team" className="section-pad">
@@ -662,7 +662,9 @@ function Team() {
                 <div className="mt-4 flex items-center justify-between">
                   <span className="text-xs text-ivory/40">Warsaw, PL</span>
                   <a
-                    href="#"
+                    href={m.linkedin}
+                    target={m.linkedin === "#" ? undefined : "_blank"}
+                    rel={m.linkedin === "#" ? undefined : "noopener noreferrer"}
                     aria-label={`${m.role} LinkedIn`}
                     className="text-ivory/50 hover:text-gold transition-colors"
                   >
