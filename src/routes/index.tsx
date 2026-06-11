@@ -575,7 +575,7 @@ function CareerTracks() {
 function Team() {
   const members = [
     { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto.url },
-    { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/" },
+    { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto.url },
     { role: "Head of Research", name: "Name Surname", linkedin: "#" },
     { role: "Analyst", name: "Name Surname", linkedin: "#" },
   ];
