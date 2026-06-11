@@ -445,39 +445,8 @@ function Process() {
   );
 }
 
-/* ---------------- Projects (Pitchbook card) ---------------- */
+/* ---------------- Projects (In Progress) ---------------- */
 function Projects() {
-  const sections = [
-    {
-      h: "Investment Thesis",
-      b: "Acquisition would consolidate global leadership in luxury, combining LVMH's distribution power with Hermès's unmatched craftsmanship pricing power.",
-    },
-    {
-      h: "Strategic Rationale",
-      b: "Vertical integration of high-margin leather goods, deepening exposure to ultra-high-net-worth clientele and silk/scarves verticals.",
-    },
-    {
-      h: "Synergy Analysis",
-      b: "Estimated €1.2–1.6B in revenue synergies (cross-brand retail, Asia distribution) and €350–500M cost synergies over 5 years.",
-    },
-    {
-      h: "DCF Valuation",
-      b: "WACC 7.4%, terminal growth 3.0%. Implied EV €310–340B per share, ~12–18% premium to 30-day VWAP.",
-    },
-    {
-      h: "Comparable Companies",
-      b: "Hermès trades at ~52x NTM EPS vs. luxury peers at 28x, reflecting scarcity and brand exclusivity premium.",
-    },
-    {
-      h: "Transaction Structure",
-      b: "Mixed stock-and-cash offer (60/40) with collar, contingent on antitrust clearance in EU, US, and China.",
-    },
-    {
-      h: "Recommendation",
-      b: "Strategically attractive but valuation gap and Dumas family control make a hostile transaction unlikely. HOLD with watch.",
-    },
-  ];
-
   return (
     <section id="projects" className="relative section-pad">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -493,68 +462,49 @@ function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="relative bg-gradient-to-br from-navy via-navy to-navy-rich border border-gold/25 shadow-[0_30px_80px_-30px_rgba(212,175,55,0.25)]"
+          className="relative bg-gradient-to-br from-navy via-navy to-navy-rich border border-gold/25 shadow-[0_30px_80px_-30px_rgba(212,175,55,0.25)] overflow-hidden"
         >
-          {/* Pitchbook header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 p-8 lg:p-12 border-b border-gold/20">
-            <div>
-              <div className="text-[11px] tracking-[0.4em] uppercase text-gold/80 mb-3">
-                Confidential · Discussion Materials
-              </div>
-              <h3 className="font-serif text-3xl lg:text-5xl leading-tight">
-                LVMH <span className="text-gold-gradient italic">Potential Acquisition</span>{" "}
-                of Hermès
-              </h3>
-              <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-ivory/60">
-                <span>Sector: Luxury Goods</span>
-                <span className="text-gold/40">·</span>
-                <span>Region: EMEA</span>
-                <span className="text-gold/40">·</span>
-                <span>Status: Hypothetical Case</span>
-              </div>
+          <div className="absolute inset-0 grid-overlay opacity-30 pointer-events-none" />
+
+          <div className="relative px-8 py-20 lg:px-16 lg:py-28 text-center flex flex-col items-center">
+            <div className="inline-flex items-center gap-3 border border-gold/40 px-5 py-2 mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+              </span>
+              <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
+                In Development
+              </span>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="text-right">
-                <div className="text-[10px] tracking-[0.3em] uppercase text-ivory/50">
-                  Prepared by
-                </div>
-                <div className="font-serif text-lg text-ivory">WMS Research</div>
-              </div>
-              <img
-                src={logo}
-                alt=""
-                width={56}
-                height={56}
-                loading="lazy"
-                className="h-14 w-14 rounded-full ring-1 ring-gold/40"
-              />
+
+            <h3 className="font-serif text-3xl lg:text-5xl leading-tight max-w-3xl">
+              Our first <span className="text-gold-gradient italic">research project</span> is currently in the making.
+            </h3>
+
+            <p className="mt-6 max-w-2xl text-base text-ivory/65 leading-relaxed">
+              Members are assembling the deal team, defining the thesis, and building
+              the analytical framework. The full pitchbook — covering strategic
+              rationale, valuation, and recommendation — will be published here once
+              complete.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-ivory/50">
+              <span>Sector: TBA</span>
+              <span className="text-gold/40">·</span>
+              <span>Region: TBA</span>
+              <span className="text-gold/40">·</span>
+              <span>Expected: Coming Soon</span>
             </div>
+
+            <div className="mt-12 h-px w-24 bg-gold/40" />
           </div>
 
-          {/* Pitchbook body */}
-          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gold/15">
-            {sections.map((s, i) => (
-              <div
-                key={s.h}
-                className={`p-8 lg:p-10 ${i >= 2 ? "border-t border-gold/15" : ""}`}
-              >
-                <div className="flex items-baseline gap-3 mb-3">
-                  <span className="font-serif text-gold/40 text-sm">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h4 className="font-serif text-xl text-ivory tracking-tight">{s.h}</h4>
-                </div>
-                <p className="text-sm text-ivory/65 leading-relaxed pl-7">{s.b}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex items-center justify-between p-6 lg:p-8 border-t border-gold/20 bg-navy-deep/50">
+          <div className="relative flex items-center justify-between p-6 lg:p-8 border-t border-gold/20 bg-navy-deep/50">
             <span className="text-[10px] tracking-[0.3em] uppercase text-ivory/40">
-              Warsaw M&amp;A Society · Pitchbook v1
+              Warsaw M&amp;A Society · Research Pipeline
             </span>
             <span className="text-[10px] tracking-[0.3em] uppercase text-gold">
-              Page 01 / 07
+              Stay Tuned
             </span>
           </div>
         </motion.div>
@@ -562,6 +512,7 @@ function Projects() {
     </section>
   );
 }
+
 
 /* ---------------- Career tracks ---------------- */
 function CareerTracks() {
