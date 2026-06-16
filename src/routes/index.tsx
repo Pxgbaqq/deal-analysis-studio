@@ -605,7 +605,7 @@ function Team() {
   const members = [
     { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto.url },
     { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto.url },
-    { role: "Analyst", name: "Denys Suk", linkedin: "#", photo: denysPhoto.url },
+    { role: "Analyst", name: "Denys Suk", linkedin: "https://www.linkedin.com/in/denys-suk-727b6839a/", photo: denysPhoto.url },
   ];
   return (
     <section id="team" className="section-pad">
