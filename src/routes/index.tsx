@@ -748,7 +748,9 @@ function Contact() {
               <span className="text-sm tracking-wide">contact@warsawmasociety.com</span>
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/company/127804235/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 text-ivory/80 hover:text-gold transition-colors group"
             >
               <span className="flex h-11 w-11 items-center justify-center border border-gold/40 group-hover:border-gold transition-colors">
