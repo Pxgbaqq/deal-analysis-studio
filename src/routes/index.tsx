@@ -605,7 +605,7 @@ function Team() {
   const members = [
     { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto.url },
     { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto.url },
-    { role: "Analyst", name: "Denys Suk", linkedin: "#", photo: denysPhoto.url },
+    { role: "Analyst", name: "Denys Suk", linkedin: "https://www.linkedin.com/in/denys-suk-727b6839a/", photo: denysPhoto.url },
   ];
   return (
     <section id="team" className="section-pad">
@@ -748,7 +748,9 @@ function Contact() {
               <span className="text-sm tracking-wide">contact@warsawmasociety.com</span>
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/company/127804235/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 text-ivory/80 hover:text-gold transition-colors group"
             >
               <span className="flex h-11 w-11 items-center justify-center border border-gold/40 group-hover:border-gold transition-colors">
