@@ -285,7 +285,7 @@ function About() {
   const stats = [
     { value: 10, suffix: "+", label: "Members" },
     { value: 10, suffix: "+", label: "Industries Analyzed" },
-    { value: 1, suffix: "", label: "Live M&A Project" },
+    { value: 2, suffix: "", label: "Live M&A Projects" },
     { value: 100, suffix: "%", label: "Student-Led" },
   ];
 
@@ -448,69 +448,97 @@ function Process() {
   );
 }
 
-/* ---------------- Projects (In Progress) ---------------- */
+/* ---------------- Projects (Live) ---------------- */
 function Projects() {
+  const projects = [
+    {
+      title: "Microsoft / Activision Blizzard",
+      type: "Strategic Acquisition",
+      sector: "Technology · Gaming",
+      region: "United States",
+      value: "$68.7B",
+      thesis:
+        "Examining the largest gaming acquisition in history — synergies across cloud, mobile, and subscription ecosystems, plus the regulatory pathway through the FTC and CMA.",
+    },
+    {
+      title: "Adnoc / Covestro",
+      type: "Cross-Border Takeover",
+      sector: "Chemicals · Energy Transition",
+      region: "UAE → Germany",
+      value: "€14.7B",
+      thesis:
+        "Analyzing Adnoc's strategic push into specialty chemicals, deal structuring under German takeover law, and the implications for European industrial M&A.",
+    },
+  ];
+
   return (
     <section id="projects" className="relative section-pad">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-3xl mb-16">
           <Eyebrow>Projects</Eyebrow>
           <SectionTitle>
-            Current <span className="italic text-gold-gradient">Research Project</span>
+            Live <span className="italic text-gold-gradient">M&amp;A Projects</span>
           </SectionTitle>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
-          className="relative bg-gradient-to-br from-navy via-navy to-navy-rich border border-gold/25 shadow-[0_30px_80px_-30px_rgba(212,175,55,0.25)] overflow-hidden"
-        >
-          <div className="absolute inset-0 grid-overlay opacity-30 pointer-events-none" />
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((p, i) => (
+            <motion.article
+              key={p.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              className="relative bg-gradient-to-br from-navy via-navy to-navy-rich border border-gold/25 shadow-[0_30px_80px_-30px_rgba(212,175,55,0.25)] overflow-hidden flex flex-col"
+            >
+              <div className="absolute inset-0 grid-overlay opacity-30 pointer-events-none" />
 
-          <div className="relative px-8 py-20 lg:px-16 lg:py-28 text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-3 border border-gold/40 px-5 py-2 mb-8">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
-              </span>
-              <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
-                In Development
-              </span>
-            </div>
+              <div className="relative px-8 py-10 lg:px-10 lg:py-12 flex-1 flex flex-col">
+                <div className="inline-flex self-start items-center gap-3 border border-gold/40 px-4 py-1.5 mb-8">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+                  </span>
+                  <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
+                    Live
+                  </span>
+                </div>
 
-            <h3 className="font-serif text-3xl lg:text-5xl leading-tight max-w-3xl">
-              Our first <span className="text-gold-gradient italic">research project</span> is currently in the making.
-            </h3>
+                <p className="font-serif text-[11px] tracking-[0.4em] uppercase text-ivory/50 mb-3">
+                  {p.type}
+                </p>
+                <h3 className="font-serif text-2xl lg:text-3xl leading-tight">
+                  {p.title}
+                </h3>
 
-            <p className="mt-6 max-w-2xl text-base text-ivory/65 leading-relaxed">
-              Members are assembling the deal team, defining the thesis, and building
-              the analytical framework. The full pitchbook — covering strategic
-              rationale, valuation, and recommendation — will be published here once
-              complete.
-            </p>
+                <p className="font-serif italic text-gold-gradient text-lg mt-3">
+                  {p.value}
+                </p>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-ivory/50">
-              <span>Sector: TBA</span>
-              <span className="text-gold/40">·</span>
-              <span>Region: TBA</span>
-              <span className="text-gold/40">·</span>
-              <span>Expected: Coming Soon</span>
-            </div>
+                <p className="font-serif mt-6 text-base text-ivory/70 leading-relaxed flex-1">
+                  {p.thesis}
+                </p>
 
-            <div className="mt-12 h-px w-24 bg-gold/40" />
-          </div>
+                <div className="mt-8 h-px w-16 bg-gold/40" />
 
-          <div className="relative flex items-center justify-between p-6 lg:p-8 border-t border-gold/20 bg-navy-deep/50">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-ivory/40">
-              Warsaw M&amp;A Society · Research Pipeline
-            </span>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-gold">
-              Stay Tuned
-            </span>
-          </div>
-        </motion.div>
+                <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 font-serif text-xs text-ivory/55">
+                  <span>{p.sector}</span>
+                  <span className="text-gold/40">·</span>
+                  <span>{p.region}</span>
+                </div>
+              </div>
+
+              <div className="relative flex items-center justify-between px-6 py-4 lg:px-10 border-t border-gold/20 bg-navy-deep/50">
+                <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-ivory/40">
+                  Deal Team · Active
+                </span>
+                <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-gold">
+                  In Analysis
+                </span>
+              </div>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   );
