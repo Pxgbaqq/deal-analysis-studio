@@ -452,24 +452,29 @@ function Process() {
 function Projects() {
   const projects = [
     {
-      title: "Microsoft / Activision Blizzard",
-      type: "Strategic Acquisition",
-      sector: "Technology · Gaming",
-      region: "United States",
-      value: "$68.7B",
+      title: "BP / Shell",
+      type: "Merger of Equals",
+      sector: "Energy · Oil & Gas",
+      region: "United Kingdom",
+      value: "Completed Analysis",
+      status: "completed" as const,
       thesis:
-        "Examining the largest gaming acquisition in history — synergies across cloud, mobile, and subscription ecosystems, plus the regulatory pathway through the FTC and CMA.",
+        "A full merger analysis of the two British energy majors — combined asset base, synergy modelling, capital structure implications, and the competition review that a transaction of this scale would face.",
+      file: "/reports/bp-shell-merger-analysis.pdf",
     },
     {
-      title: "Adnoc / Covestro",
-      type: "Cross-Border Takeover",
-      sector: "Chemicals · Energy Transition",
-      region: "UAE → Germany",
-      value: "€14.7B",
+      title: "Goldman Sachs / Raymond James",
+      type: "Strategic Acquisition",
+      sector: "Financial Services · Wealth Management",
+      region: "United States",
+      value: "Live Coverage",
+      status: "live" as const,
       thesis:
-        "Analyzing Adnoc's strategic push into specialty chemicals, deal structuring under German takeover law, and the implications for European industrial M&A.",
+        "Ongoing analysis of a potential combination in wealth management and advisory — franchise fit, adviser retention economics, capital requirements, and the regulatory pathway.",
+      file: null,
     },
   ];
+
 
   return (
     <section id="projects" className="relative section-pad">
