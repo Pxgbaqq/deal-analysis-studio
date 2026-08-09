@@ -24,6 +24,8 @@ import dmytroPhoto from "@/assets/dmytro.png.asset.json";
 import alexandrPhoto from "@/assets/alexandr.png.asset.json";
 import denysPhoto from "@/assets/denys.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
+import bpShellReport from "@/assets/bp-shell-report.pdf.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
