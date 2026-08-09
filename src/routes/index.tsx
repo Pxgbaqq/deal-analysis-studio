@@ -348,13 +348,12 @@ function Stat({
   value,
   suffix,
   label,
-  divider,
 }: {
   value: number;
   suffix: string;
   label: string;
-  divider: boolean;
 }) {
+
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [n, setN] = useState(0);
