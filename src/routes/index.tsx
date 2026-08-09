@@ -24,6 +24,8 @@ import dmytroPhoto from "@/assets/dmytro.png.asset.json";
 import alexandrPhoto from "@/assets/alexandr.png.asset.json";
 import denysPhoto from "@/assets/denys.jpg.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
+import bpShellReport from "@/assets/bp-shell-report.pdf.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -333,11 +335,12 @@ function About() {
           </div>
         </div>
 
-        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 border-y border-gold/20">
-          {stats.map((s, i) => (
-            <Stat key={s.label} {...s} divider={i !== 0} />
+        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 border-t border-l border-gold/20">
+          {stats.map((s) => (
+            <Stat key={s.label} {...s} />
           ))}
         </div>
+
       </div>
     </section>
   );
@@ -347,13 +350,12 @@ function Stat({
   value,
   suffix,
   label,
-  divider,
 }: {
   value: number;
   suffix: string;
   label: string;
-  divider: boolean;
 }) {
+
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [n, setN] = useState(0);
@@ -376,10 +378,9 @@ function Stat({
   return (
     <div
       ref={ref}
-      className={`py-10 px-6 text-center ${
-        divider ? "lg:border-l border-gold/20" : ""
-      } ${divider && "border-l"}`}
+      className="flex flex-col items-center justify-center py-10 px-6 text-center border-b border-r border-gold/20"
     >
+
       <div className="font-serif text-5xl lg:text-6xl text-gold-gradient">
         {n}
         {suffix}
@@ -462,7 +463,7 @@ function Projects() {
       status: "completed" as const,
       thesis:
         "A full merger analysis of the two British energy majors — combined asset base, synergy modelling, capital structure implications, and the competition review that a transaction of this scale would face.",
-      file: "/reports/bp-shell-merger-analysis.pdf",
+      file: bpShellReport.url,
     },
     {
       title: "Goldman Sachs / Raymond James",
