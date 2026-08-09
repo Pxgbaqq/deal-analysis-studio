@@ -463,7 +463,7 @@ function Projects() {
       status: "completed" as const,
       thesis:
         "A full merger analysis of the two British energy majors — combined asset base, synergy modelling, capital structure implications, and the competition review that a transaction of this scale would face.",
-      file: "/reports/bp-shell-merger-analysis.pdf",
+      file: bpShellReport.url,
     },
     {
       title: "Goldman Sachs / Raymond James",
