@@ -376,10 +376,9 @@ function Stat({
   return (
     <div
       ref={ref}
-      className={`py-10 px-6 text-center ${
-        divider ? "lg:border-l border-gold/20" : ""
-      } ${divider && "border-l"}`}
+      className="flex flex-col items-center justify-center py-10 px-6 text-center border-b border-r border-gold/20"
     >
+
       <div className="font-serif text-5xl lg:text-6xl text-gold-gradient">
         {n}
         {suffix}
