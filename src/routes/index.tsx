@@ -16,6 +16,8 @@ import {
   Check,
   Menu,
   X,
+  Download,
+
 } from "lucide-react";
 import logo from "@/assets/wms-logo.jpg";
 import dmytroPhoto from "@/assets/dmytro.png.asset.json";
@@ -452,24 +454,29 @@ function Process() {
 function Projects() {
   const projects = [
     {
-      title: "Microsoft / Activision Blizzard",
-      type: "Strategic Acquisition",
-      sector: "Technology · Gaming",
-      region: "United States",
-      value: "$68.7B",
+      title: "BP / Shell",
+      type: "Merger of Equals",
+      sector: "Energy · Oil & Gas",
+      region: "United Kingdom",
+      value: "Completed Analysis",
+      status: "completed" as const,
       thesis:
-        "Examining the largest gaming acquisition in history — synergies across cloud, mobile, and subscription ecosystems, plus the regulatory pathway through the FTC and CMA.",
+        "A full merger analysis of the two British energy majors — combined asset base, synergy modelling, capital structure implications, and the competition review that a transaction of this scale would face.",
+      file: "/reports/bp-shell-merger-analysis.pdf",
     },
     {
-      title: "Adnoc / Covestro",
-      type: "Cross-Border Takeover",
-      sector: "Chemicals · Energy Transition",
-      region: "UAE → Germany",
-      value: "€14.7B",
+      title: "Goldman Sachs / Raymond James",
+      type: "Strategic Acquisition",
+      sector: "Financial Services · Wealth Management",
+      region: "United States",
+      value: "Live Coverage",
+      status: "live" as const,
       thesis:
-        "Analyzing Adnoc's strategic push into specialty chemicals, deal structuring under German takeover law, and the implications for European industrial M&A.",
+        "Ongoing analysis of a potential combination in wealth management and advisory — franchise fit, adviser retention economics, capital requirements, and the regulatory pathway.",
+      file: null,
     },
   ];
+
 
   return (
     <section id="projects" className="relative section-pad">
@@ -495,12 +502,16 @@ function Projects() {
 
               <div className="relative px-8 py-10 lg:px-10 lg:py-12 flex-1 flex flex-col">
                 <div className="inline-flex self-start items-center gap-3 border border-gold/40 px-4 py-1.5 mb-8">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
-                  </span>
+                  {p.status === "live" ? (
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+                    </span>
+                  ) : (
+                    <span className="inline-flex h-2 w-2 rounded-full bg-gold/50" />
+                  )}
                   <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
-                    Live
+                    {p.status === "live" ? "Live" : "Completed"}
                   </span>
                 </div>
 
@@ -526,16 +537,29 @@ function Projects() {
                   <span className="text-gold/40">·</span>
                   <span>{p.region}</span>
                 </div>
+
+                {p.file && (
+                  <a
+                    href={p.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex self-start items-center gap-3 border border-gold/40 px-6 py-3 font-serif text-[11px] tracking-[0.3em] uppercase text-gold transition-colors duration-300 hover:bg-gold hover:text-navy-deep"
+                  >
+                    <Download size={14} strokeWidth={1.5} />
+                    Download Report
+                  </a>
+                )}
               </div>
 
               <div className="relative flex items-center justify-between px-6 py-4 lg:px-10 border-t border-gold/20 bg-navy-deep/50">
                 <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-ivory/40">
-                  Deal Team · Active
+                  Deal Team · {p.status === "live" ? "Active" : "Closed"}
                 </span>
                 <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-gold">
-                  In Analysis
+                  {p.status === "live" ? "In Analysis" : "Published"}
                 </span>
               </div>
+
             </motion.article>
           ))}
         </div>
