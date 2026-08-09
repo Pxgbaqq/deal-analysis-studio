@@ -500,12 +500,16 @@ function Projects() {
 
               <div className="relative px-8 py-10 lg:px-10 lg:py-12 flex-1 flex flex-col">
                 <div className="inline-flex self-start items-center gap-3 border border-gold/40 px-4 py-1.5 mb-8">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
-                  </span>
+                  {p.status === "live" ? (
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+                    </span>
+                  ) : (
+                    <span className="inline-flex h-2 w-2 rounded-full bg-gold/50" />
+                  )}
                   <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
-                    Live
+                    {p.status === "live" ? "Live" : "Completed"}
                   </span>
                 </div>
 
@@ -531,16 +535,29 @@ function Projects() {
                   <span className="text-gold/40">·</span>
                   <span>{p.region}</span>
                 </div>
+
+                {p.file && (
+                  <a
+                    href={p.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex self-start items-center gap-3 border border-gold/40 px-6 py-3 font-serif text-[11px] tracking-[0.3em] uppercase text-gold transition-colors duration-300 hover:bg-gold hover:text-navy-deep"
+                  >
+                    <Download size={14} strokeWidth={1.5} />
+                    Download Report
+                  </a>
+                )}
               </div>
 
               <div className="relative flex items-center justify-between px-6 py-4 lg:px-10 border-t border-gold/20 bg-navy-deep/50">
                 <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-ivory/40">
-                  Deal Team · Active
+                  Deal Team · {p.status === "live" ? "Active" : "Closed"}
                 </span>
                 <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-gold">
-                  In Analysis
+                  {p.status === "live" ? "In Analysis" : "Published"}
                 </span>
               </div>
+
             </motion.article>
           ))}
         </div>
