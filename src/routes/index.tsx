@@ -20,11 +20,10 @@ import {
 
 } from "lucide-react";
 import logo from "@/assets/wms-logo.jpg";
-import dmytroPhoto from "@/assets/dmytro.png.asset.json";
-import alexandrPhoto from "@/assets/alexandr.png.asset.json";
-import denysPhoto from "@/assets/denys.jpg.asset.json";
+import dmytroPhoto from "@/assets/dmytro.png";
+import alexandrPhoto from "@/assets/alexandr.png";
+import denysPhoto from "@/assets/denys.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
-import bpShellReport from "@/assets/bp-shell-report.pdf.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -463,7 +462,7 @@ function Projects() {
       status: "completed" as const,
       thesis:
         "A full merger analysis of the two British energy majors — combined asset base, synergy modelling, capital structure implications, and the competition review that a transaction of this scale would face.",
-      file: bpShellReport.url,
+      file: "/reports/bp-shell-merger-analysis.pdf",
     },
     {
       title: "Goldman Sachs / Raymond James",
@@ -628,9 +627,9 @@ function CareerTracks() {
 /* ---------------- Team ---------------- */
 function Team() {
   const members = [
-    { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto.url },
-    { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto.url },
-    { role: "Analyst", name: "Denys Suk", linkedin: "https://www.linkedin.com/in/denys-suk-727b6839a/", photo: denysPhoto.url },
+    { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto },
+    { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto },
+    { role: "Analyst", name: "Denys Suk", linkedin: "https://www.linkedin.com/in/denys-suk-727b6839a/", photo: denysPhoto },
   ];
   return (
     <section id="team" className="section-pad">
