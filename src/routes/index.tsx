@@ -333,11 +333,12 @@ function About() {
           </div>
         </div>
 
-        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 border-y border-gold/20">
-          {stats.map((s, i) => (
-            <Stat key={s.label} {...s} divider={i !== 0} />
+        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 border-t border-l border-gold/20">
+          {stats.map((s) => (
+            <Stat key={s.label} {...s} />
           ))}
         </div>
+
       </div>
     </section>
   );
