@@ -627,7 +627,7 @@ function CareerTracks() {
 /* ---------------- Team ---------------- */
 function Team() {
   const members = [
-    { role: "President", name: "Dmytro Kuryltsiv", linkedin: "#", photo: dmytroPhoto },
+    { role: "President", name: "Dmytro Kuryltsiv", linkedin: "https://www.linkedin.com/in/dmytrok1/", photo: dmytroPhoto },
     { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto },
     { role: "Analyst", name: "Denys Suk", linkedin: "https://www.linkedin.com/in/denys-suk-727b6839a/", photo: denysPhoto },
   ];
