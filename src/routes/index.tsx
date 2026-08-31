@@ -789,24 +789,14 @@ function Contact() {
           onSubmit={(e) => {
             e.preventDefault();
             const data = new FormData(e.currentTarget);
-            const name = String(data.get("name") || "");
-            const email = String(data.get("email") || "");
-            const university = String(data.get("university") || "");
             const message = String(data.get("message") || "");
-            const subject = encodeURIComponent(`WMS Inquiry — ${name}`);
-            const body = encodeURIComponent(
-              `Name: ${name}\nEmail: ${email}\nUniversity: ${university}\n\n${message}`
-            );
+            const subject = encodeURIComponent("WMS Inquiry");
+            const body = encodeURIComponent(message);
             window.location.href = `mailto:warsawmasociety@gmail.com?subject=${subject}&body=${body}`;
             setSubmitted(true);
           }}
           className="lg:col-span-7 border border-gold/20 bg-navy-deep/70 p-8 lg:p-10 space-y-6"
         >
-          <div className="grid sm:grid-cols-2 gap-6">
-            <Field label="Name" name="name" required />
-            <Field label="Email" name="email" type="email" required />
-          </div>
-          <Field label="University" name="university" />
           <Field label="Message" name="message" textarea required />
 
           <button
