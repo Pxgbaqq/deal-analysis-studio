@@ -797,6 +797,11 @@ function Contact() {
           }}
           className="lg:col-span-7 border border-gold/20 bg-navy-deep/70 p-8 lg:p-10 space-y-6"
         >
+          <div className="grid sm:grid-cols-2 gap-6">
+            <Field label="Full Name" name="name" required />
+            <Field label="Email" name="email" type="email" required />
+          </div>
+          <Field label="University / Organization" name="university" />
           <Field label="Message" name="message" textarea required />
 
           <button
