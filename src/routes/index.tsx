@@ -763,13 +763,13 @@ function Contact() {
           </p>
           <div className="mt-10 space-y-5">
             <a
-              href="mailto:contact@warsawmasociety.com"
+              href="mailto:warsawmasociety@gmail.com"
               className="flex items-center gap-4 text-ivory/80 hover:text-gold transition-colors group"
             >
               <span className="flex h-11 w-11 items-center justify-center border border-gold/40 group-hover:border-gold transition-colors">
                 <Mail size={16} className="text-gold" />
               </span>
-              <span className="text-sm tracking-wide">contact@warsawmasociety.com</span>
+              <span className="text-sm tracking-wide">warsawmasociety@gmail.com</span>
             </a>
             <a
               href="https://www.linkedin.com/company/127804235/"
@@ -890,7 +890,7 @@ function Footer() {
             </div>
             <div className="flex md:justify-end gap-3">
               <a
-                href="mailto:contact@warsawmasociety.com"
+                href="mailto:warsawmasociety@gmail.com"
                 className="flex h-10 w-10 items-center justify-center border border-gold/40 text-gold hover:bg-gold hover:text-navy-deep transition-colors"
                 aria-label="Email"
               >
