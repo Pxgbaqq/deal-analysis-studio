@@ -789,14 +789,9 @@ function Contact() {
           onSubmit={(e) => {
             e.preventDefault();
             const data = new FormData(e.currentTarget);
-            const name = String(data.get("name") || "");
-            const email = String(data.get("email") || "");
-            const university = String(data.get("university") || "");
             const message = String(data.get("message") || "");
-            const subject = encodeURIComponent(`WMS Inquiry — ${name}`);
-            const body = encodeURIComponent(
-              `Name: ${name}\nEmail: ${email}\nUniversity: ${university}\n\n${message}`
-            );
+            const subject = encodeURIComponent("WMS Inquiry");
+            const body = encodeURIComponent(message);
             window.location.href = `mailto:warsawmasociety@gmail.com?subject=${subject}&body=${body}`;
             setSubmitted(true);
           }}
