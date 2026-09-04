@@ -349,18 +349,20 @@ function Stat({
   value,
   suffix,
   label,
+  animated = true,
 }: {
   value: number;
   suffix: string;
   label: string;
+  animated?: boolean;
 }) {
 
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [n, setN] = useState(0);
+  const [n, setN] = useState(animated ? 0 : value);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || !animated) return;
     const duration = 1600;
     const start = performance.now();
     let raf = 0;
@@ -372,7 +374,7 @@ function Stat({
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, value]);
+  }, [inView, value, animated]);
 
   return (
     <div
