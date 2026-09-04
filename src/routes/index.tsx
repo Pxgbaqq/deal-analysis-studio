@@ -286,9 +286,9 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 /* ---------------- About ---------------- */
 function About() {
   const stats = [
-    { value: 10, suffix: "+", label: "Members" },
-    { value: 10, suffix: "+", label: "Industries Analyzed" },
+    { value: 3, suffix: "", label: "Active Analysts" },
     { value: 2, suffix: "", label: "Live M&A Projects" },
+    { value: 1, suffix: "", label: "Completed Report" },
     { value: 100, suffix: "%", label: "Student-Led" },
   ];
 
