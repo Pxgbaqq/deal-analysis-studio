@@ -289,7 +289,7 @@ function About() {
     { value: 2, suffix: "", label: "Live Deal Cases" },
     { value: 1, suffix: "", label: "Completed Analysis" },
     { value: 100, suffix: "%", label: "Student Led" },
-    { value: 2026, suffix: "", label: "Founded at the University of Warsaw", animated: false },
+    { value: 2026, suffix: "", label: "Founded at the University of Warsaw" },
   ];
 
   return (
