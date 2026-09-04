@@ -286,10 +286,10 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 /* ---------------- About ---------------- */
 function About() {
   const stats = [
-    { value: 3, suffix: "", label: "Active Analysts" },
-    { value: 2, suffix: "", label: "Live M&A Projects" },
-    { value: 1, suffix: "", label: "Completed Report" },
-    { value: 100, suffix: "%", label: "Student-Led" },
+    { value: 2, suffix: "", label: "Live Deal Cases" },
+    { value: 1, suffix: "", label: "Completed Analysis" },
+    { value: 100, suffix: "%", label: "Student Led" },
+    { value: 2026, suffix: "", label: "Founded at the University of Warsaw", animated: false },
   ];
 
   return (
@@ -305,32 +305,13 @@ function About() {
           </div>
           <div className="lg:col-span-7 space-y-6 text-ivory/75 leading-relaxed">
             <p>
-              Warsaw M&amp;A Society is a student organization dedicated to developing
-              practical finance skills through hands-on transaction analysis.
+              Warsaw M&amp;A Society is a student-led research society focused on mergers
+              &amp; acquisitions, valuation and investment banking. We analyze real-world
+              transactions through structured strategic, industry and financial analysis.
             </p>
-            <p>
-              Members examine real-world mergers, acquisitions, leveraged buyouts, and
-              strategic transactions using professional frameworks employed by investment
-              banks and private equity firms.
+            <p className="text-ivory font-medium tracking-wide">
+              Small team. Institutional approach. Real transactions.
             </p>
-            <p>
-              The Society combines education, networking, and project-based learning to
-              help students prepare for careers in:
-            </p>
-            <ul className="grid sm:grid-cols-2 gap-y-2 gap-x-6 pt-2">
-              {[
-                "Investment Banking",
-                "Private Equity",
-                "Corporate Development",
-                "Equity Research",
-                "Corporate Finance",
-              ].map((c) => (
-                <li key={c} className="flex items-center gap-3 text-ivory">
-                  <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
-                  <span className="text-sm tracking-wide">{c}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
@@ -349,18 +330,20 @@ function Stat({
   value,
   suffix,
   label,
+  animated = true,
 }: {
   value: number;
   suffix: string;
   label: string;
+  animated?: boolean;
 }) {
 
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [n, setN] = useState(0);
+  const [n, setN] = useState(animated ? 0 : value);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || !animated) return;
     const duration = 1600;
     const start = performance.now();
     let raf = 0;
@@ -372,7 +355,7 @@ function Stat({
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, value]);
+  }, [inView, value, animated]);
 
   return (
     <div
