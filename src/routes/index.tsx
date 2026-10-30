@@ -23,6 +23,7 @@ import logo from "@/assets/wms-logo.jpg";
 import dmytroPhoto from "@/assets/dmytro.png";
 import alexandrPhoto from "@/assets/alexandr.png";
 import denysPhoto from "@/assets/denys.jpg";
+import nohaminPhoto from "@/assets/nohamin.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
 
@@ -613,6 +614,7 @@ function Team() {
     { role: "President", name: "Dmytro Kuryltsiv", linkedin: "https://www.linkedin.com/in/dmytrok1/", photo: dmytroPhoto },
     { role: "Vice President", name: "Alexandr Saharov", linkedin: "https://www.linkedin.com/in/alexandr-saharov-48a532319/", photo: alexandrPhoto },
     { role: "Head of Financial Advisory", name: "Denys Suk", linkedin: "https://www.linkedin.com/in/denys-suk-727b6839a/", photo: denysPhoto },
+    { role: "Analyst", name: "Nohamin Melesse", linkedin: "https://www.linkedin.com/in/nohaminmelesse/", photo: nohaminPhoto },
   ];
   return (
     <section id="team" className="section-pad">
