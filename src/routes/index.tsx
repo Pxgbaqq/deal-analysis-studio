@@ -839,16 +839,16 @@ function Membership() {
         </div>
         <div className="lg:col-span-6">
           <div className="border border-gold/25 bg-navy-deep/70 backdrop-blur p-8">
-            <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-6">
+            <div className="text-lg tracking-[0.22em] uppercase text-gold mb-7 font-display">
               Member Benefits
             </div>
-            <ul className="grid sm:grid-cols-2 gap-x-5 gap-y-5">
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-4">
               {benefits.map(({ label, icon: Icon }) => (
                 <li key={label} className="group flex items-start gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-gold/30 text-gold transition-colors duration-300 group-hover:border-gold/70">
-                    <Icon size={14} strokeWidth={1.5} />
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center border border-gold/30 text-gold transition-colors duration-300 group-hover:border-gold/70">
+                    <Icon size={13} strokeWidth={1.5} />
                   </span>
-                  <span className="text-base leading-6 text-ivory/85">{label}</span>
+                  <span className="text-sm leading-5 text-ivory/85">{label}</span>
                 </li>
               ))}
             </ul>
