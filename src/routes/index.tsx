@@ -13,14 +13,16 @@ import {
   Search,
   Calculator,
   FileCheck,
-  Check,
   Menu,
   X,
   Download,
   ChevronLeft,
   ChevronRight,
-
+  Users,
+  FileSearch,
+  GraduationCap,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import logo from "@/assets/wms-logo.jpg";
 import dmytroPhoto from "@/assets/dmytro.png";
 import alexandrPhoto from "@/assets/alexandr.png";
@@ -807,12 +809,12 @@ function Team() {
 /* ---------------- Membership ---------------- */
 function Membership() {
   const benefits = [
-    "Live deal analysis",
-    "Valuation experience",
-    "Investment banking preparation",
-    "Networking opportunities",
-    "Team research projects",
-    "Professional development",
+    { title: "Live Deal Analysis", icon: TrendingUp },
+    { title: "Investment Banking Preparation", icon: Briefcase },
+    { title: "Team Research Projects", icon: FileSearch },
+    { title: "Valuation Experience", icon: Calculator },
+    { title: "Networking Opportunities", icon: Users },
+    { title: "Professional Development", icon: GraduationCap },
   ];
   return (
     <section id="membership" className="relative section-pad bg-navy/40 border-y border-gold/10 overflow-hidden">
@@ -840,15 +842,30 @@ function Membership() {
             <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-6">
               Member Benefits
             </div>
-            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-4">
-              {benefits.map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full border border-gold/60">
-                    <Check size={11} className="text-gold" />
-                  </span>
-                  <span className="text-sm text-ivory/85">{b}</span>
-                </li>
-              ))}
+            <ul className="grid auto-rows-fr border border-gold/25 sm:grid-cols-2">
+              {benefits.map((b, i) => {
+                const Icon = b.icon;
+                return (
+                  <li
+                    key={b.title}
+                    className={cn(
+                      "group flex flex-col gap-4 p-6 transition-colors duration-300 hover:bg-gold/[0.04] lg:p-7",
+                      i < benefits.length - 1 && "border-b border-gold/25",
+                      i >= benefits.length - 2 && "sm:border-b-0",
+                      i % 2 === 0 && "sm:border-r sm:border-gold/25",
+                    )}
+                  >
+                    <Icon
+                      size={18}
+                      strokeWidth={1.25}
+                      className="text-gold/70 transition-colors duration-300 group-hover:text-gold"
+                    />
+                    <span className="font-serif text-[15px] leading-snug text-ivory/85 transition-colors duration-300 group-hover:text-ivory">
+                      {b.title}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
