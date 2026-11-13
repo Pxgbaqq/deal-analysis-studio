@@ -13,7 +13,9 @@ import {
   Search,
   Calculator,
   FileCheck,
-  Check,
+  Users,
+  Network,
+  GraduationCap,
   Menu,
   X,
   Download,
@@ -807,12 +809,12 @@ function Team() {
 /* ---------------- Membership ---------------- */
 function Membership() {
   const benefits = [
-    "Live deal analysis",
-    "Valuation experience",
-    "Investment banking preparation",
-    "Networking opportunities",
-    "Team research projects",
-    "Professional development",
+    { label: "Live deal analysis", icon: TrendingUp },
+    { label: "Valuation experience", icon: Calculator },
+    { label: "Investment banking preparation", icon: Briefcase },
+    { label: "Networking opportunities", icon: Network },
+    { label: "Team research projects", icon: Users },
+    { label: "Professional development", icon: GraduationCap },
   ];
   return (
     <section id="membership" className="relative section-pad bg-navy/40 border-y border-gold/10 overflow-hidden">
@@ -840,13 +842,13 @@ function Membership() {
             <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-6">
               Member Benefits
             </div>
-            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-4">
-              {benefits.map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full border border-gold/60">
-                    <Check size={11} className="text-gold" />
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+              {benefits.map(({ label, icon: Icon }) => (
+                <li key={label} className="group flex items-start gap-4">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-gold/30 text-gold transition-colors duration-300 group-hover:border-gold/70">
+                    <Icon size={13} strokeWidth={1.5} />
                   </span>
-                  <span className="text-sm text-ivory/85">{b}</span>
+                  <span className="text-sm leading-6 text-ivory/85">{label}</span>
                 </li>
               ))}
             </ul>
