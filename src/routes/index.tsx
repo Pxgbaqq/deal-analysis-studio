@@ -17,6 +17,8 @@ import {
   Menu,
   X,
   Download,
+  ChevronLeft,
+  ChevronRight,
 
 } from "lucide-react";
 import logo from "@/assets/wms-logo.jpg";
@@ -435,8 +437,47 @@ function Process() {
 }
 
 /* ---------------- Projects (Live) ---------------- */
+type ProjectStatus = "live" | "early" | "completed";
+
+const STATUS_META: Record<ProjectStatus, { badge: string; team: string; stage: string }> = {
+  live: { badge: "Live", team: "Active", stage: "Finalising" },
+  early: { badge: "Early Stage", team: "Scoping", stage: "Screening" },
+  completed: { badge: "Completed", team: "Closed", stage: "Published" },
+};
+
 function Projects() {
-  const projects = [
+  const projects: {
+    title: string;
+    type: string;
+    sector: string;
+    region: string;
+    value: string;
+    status: ProjectStatus;
+    thesis: string;
+    file: string | null;
+  }[] = [
+    {
+      title: "Glencore / Hudbay Minerals",
+      type: "Cross-Border Acquisition",
+      sector: "Mining · Metals & Resources",
+      region: "Switzerland · Canada",
+      value: "Early-Stage Screening",
+      status: "early" as const,
+      thesis:
+        "A first-pass look at a combination between two diversified copper producers — resource base and reserve life, jurisdictional risk, capital intensity, and the scale arguments that would have to justify a cross-border transaction of this size.",
+      file: null,
+    },
+    {
+      title: "AMD / Rambus",
+      type: "Strategic Acquisition",
+      sector: "Technology · Semiconductors",
+      region: "United States",
+      value: "Finalising Stages",
+      status: "live" as const,
+      thesis:
+        "Live analysis of a semiconductor combination moving toward finalisation — memory-interface and IP positioning, design-cycle synergies, customer concentration, and the antitrust pathway across the key jurisdictions that would have to clear it.",
+      file: null,
+    },
     {
       title: "BP / Shell",
       type: "Merger of Equals",
@@ -448,54 +489,140 @@ function Projects() {
         "A full merger analysis of the two British energy majors — combined asset base, synergy modelling, capital structure implications, and the competition review that a transaction of this scale would face.",
       file: "/reports/bp-shell-merger-analysis.pdf",
     },
-    {
-      title: "Goldman Sachs / Raymond James",
-      type: "Strategic Acquisition",
-      sector: "Financial Services · Wealth Management",
-      region: "United States",
-      value: "Live Coverage",
-      status: "live" as const,
-      thesis:
-        "Ongoing analysis of a potential combination in wealth management and advisory — franchise fit, adviser retention economics, capital requirements, and the regulatory pathway.",
-      file: null,
-    },
   ];
 
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const drag = useRef({ active: false, startX: 0, startLeft: 0, moved: false });
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  const sync = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    sync();
+    el.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    return () => {
+      el.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
+    };
+  }, []);
+
+  const go = (dir: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.firstElementChild as HTMLElement | null;
+    const step = card ? card.offsetWidth + 32 : el.clientWidth * 0.8;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const el = trackRef.current;
+    if (!el) return;
+    drag.current = { active: true, startX: e.clientX, startLeft: el.scrollLeft, moved: false };
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!drag.current.active) return;
+    const el = trackRef.current;
+    if (!el) return;
+    const dx = e.clientX - drag.current.startX;
+    if (Math.abs(dx) > 4) {
+      drag.current.moved = true;
+      el.style.userSelect = "none";
+      window.getSelection()?.removeAllRanges();
+      el.scrollLeft = drag.current.startLeft - dx;
+    }
+  };
+
+  const endDrag = () => {
+    drag.current.active = false;
+    const el = trackRef.current;
+    if (el) el.style.userSelect = "";
+  };
+
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      drag.current.moved = false;
+    }
+  };
 
   return (
     <section id="projects" className="relative section-pad">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-3xl mb-16">
-          <Eyebrow>Projects</Eyebrow>
-          <SectionTitle>
-            Live <span className="italic text-gold-gradient">M&amp;A Projects</span>
-          </SectionTitle>
+        <div className="flex items-end justify-between gap-8 mb-16">
+          <div className="max-w-3xl">
+            <Eyebrow>Projects</Eyebrow>
+            <SectionTitle>
+              Live <span className="italic text-gold-gradient">M&amp;A Projects</span>
+            </SectionTitle>
+          </div>
+
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            <button
+              type="button"
+              aria-label="Previous project"
+              onClick={() => go(-1)}
+              disabled={atStart}
+              className="grid h-11 w-11 place-items-center border border-gold/40 text-gold transition-all duration-300 hover:bg-gold hover:text-navy-deep disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:text-gold"
+            >
+              <ChevronLeft size={18} strokeWidth={1.5} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next project"
+              onClick={() => go(1)}
+              disabled={atEnd}
+              className="grid h-11 w-11 place-items-center border border-gold/40 text-gold transition-all duration-300 hover:bg-gold hover:text-navy-deep disabled:opacity-25 disabled:hover:bg-transparent disabled:hover:text-gold"
+            >
+              <ChevronRight size={18} strokeWidth={1.5} />
+            </button>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div
+          ref={trackRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+          onClickCapture={onClickCapture}
+          className="no-scrollbar flex snap-x snap-mandatory gap-8 overflow-x-auto pb-2 cursor-grab active:cursor-grabbing"
+        >
           {projects.map((p, i) => (
             <motion.article
               key={p.title}
+              data-card
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="relative bg-gradient-to-br from-navy via-navy to-navy-rich border border-gold/25 shadow-[0_30px_80px_-30px_rgba(212,175,55,0.25)] overflow-hidden flex flex-col"
+              className="relative snap-start shrink-0 grow-0 basis-[86%] md:basis-[calc(50%_-_1rem)] bg-gradient-to-br from-navy via-navy to-navy-rich border border-gold/25 shadow-[0_30px_80px_-30px_rgba(212,175,55,0.25)] overflow-hidden flex flex-col"
             >
               <div className="absolute inset-0 grid-overlay opacity-30 pointer-events-none" />
 
               <div className="relative px-8 py-10 lg:px-10 lg:py-12 flex-1 flex flex-col">
                 <div className="inline-flex self-start items-center gap-3 border border-gold/40 px-4 py-1.5 mb-8">
-                  {p.status === "live" ? (
+                  {p.status === "completed" ? (
+                    <span className="inline-flex h-2 w-2 rounded-full bg-gold/50" />
+                  ) : (
                     <span className="relative flex h-2 w-2">
                       <span className="absolute inline-flex h-full w-full rounded-full bg-gold opacity-75 animate-ping" />
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
                     </span>
-                  ) : (
-                    <span className="inline-flex h-2 w-2 rounded-full bg-gold/50" />
                   )}
                   <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
-                    {p.status === "live" ? "Live" : "Completed"}
+                    {STATUS_META[p.status].badge}
                   </span>
                 </div>
 
@@ -537,10 +664,10 @@ function Projects() {
 
               <div className="relative flex items-center justify-between px-6 py-4 lg:px-10 border-t border-gold/20 bg-navy-deep/50">
                 <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-ivory/40">
-                  Deal Team · {p.status === "live" ? "Active" : "Closed"}
+                  Deal Team · {STATUS_META[p.status].team}
                 </span>
                 <span className="font-serif text-[10px] tracking-[0.3em] uppercase text-gold">
-                  {p.status === "live" ? "In Analysis" : "Published"}
+                  {STATUS_META[p.status].stage}
                 </span>
               </div>
 
@@ -551,7 +678,6 @@ function Projects() {
     </section>
   );
 }
-
 
 /* ---------------- Career tracks ---------------- */
 function CareerTracks() {

@@ -122,6 +122,14 @@
   background-size: 64px 64px;
 }
 
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @utility section-pad {
   padding-top: 6rem;
   padding-bottom: 6rem;
