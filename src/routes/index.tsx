@@ -458,7 +458,6 @@ function Projects() {
     region: string;
     value: string;
     status: ProjectStatus;
-    statusLabel?: string;
     thesis: string;
     file: string | null;
   }[] = [
@@ -478,9 +477,8 @@ function Projects() {
       type: "Strategic Acquisition",
       sector: "Technology · Semiconductors",
       region: "United States",
-      value: "Finished Analysis",
+      value: "Completed Analysis",
       status: "completed" as const,
-      statusLabel: "Finished",
       thesis:
         "A finished analysis of a semiconductor combination — memory-interface and IP positioning, design-cycle synergies, customer concentration, and the antitrust pathway across the key jurisdictions that would have to clear it.",
       file: amdRambusReport.url,
@@ -629,7 +627,7 @@ function Projects() {
                     </span>
                   )}
                   <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
-                    {p.statusLabel ?? STATUS_META[p.status].badge}
+                    {STATUS_META[p.status].badge}
                   </span>
                 </div>
 
