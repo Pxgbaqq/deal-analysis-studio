@@ -29,6 +29,7 @@ import alexandrPhoto from "@/assets/alexandr.png";
 import denysPhoto from "@/assets/denys.jpg";
 import nohaminPhoto from "@/assets/nohamin.png";
 import heroBg from "@/assets/hero-bg.jpg";
+import amdRambusReport from "@/assets/amd-rambus-merger-analysis.pdf.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -41,6 +42,8 @@ export const Route = createFileRoute("/")({
           "Warsaw M&A Society is a student-led organization focused on mergers & acquisitions, valuation, investment banking, and strategic deal analysis.",
       },
       { property: "og:title", content: "Warsaw M&A Society — Where Deals Get Analyzed" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       {
         property: "og:description",
         content:
@@ -455,6 +458,7 @@ function Projects() {
     region: string;
     value: string;
     status: ProjectStatus;
+    statusLabel?: string;
     thesis: string;
     file: string | null;
   }[] = [
@@ -474,11 +478,12 @@ function Projects() {
       type: "Strategic Acquisition",
       sector: "Technology · Semiconductors",
       region: "United States",
-      value: "Finalising Stages",
-      status: "live" as const,
+      value: "Finished Analysis",
+      status: "completed" as const,
+      statusLabel: "Finished",
       thesis:
-        "Live analysis of a semiconductor combination moving toward finalisation — memory-interface and IP positioning, design-cycle synergies, customer concentration, and the antitrust pathway across the key jurisdictions that would have to clear it.",
-      file: null,
+        "A finished analysis of a semiconductor combination — memory-interface and IP positioning, design-cycle synergies, customer concentration, and the antitrust pathway across the key jurisdictions that would have to clear it.",
+      file: amdRambusReport.url,
     },
     {
       title: "BP / Shell",
@@ -624,7 +629,7 @@ function Projects() {
                     </span>
                   )}
                   <span className="text-[11px] tracking-[0.4em] uppercase text-gold">
-                    {STATUS_META[p.status].badge}
+                    {p.statusLabel ?? STATUS_META[p.status].badge}
                   </span>
                 </div>
 
