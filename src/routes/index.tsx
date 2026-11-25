@@ -481,7 +481,7 @@ function Projects() {
       status: "completed" as const,
       thesis:
         "A finished analysis of a semiconductor combination — memory-interface and IP positioning, design-cycle synergies, customer concentration, and the antitrust pathway across the key jurisdictions that would have to clear it.",
-      file: amdRambusReport.url,
+      file: `https://deal-analysis-studio.lovable.app${amdRambusReport.url}`,
     },
     {
       title: "BP / Shell",
